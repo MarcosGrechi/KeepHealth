@@ -1,0 +1,39 @@
+<app-header></app-header>
+<section class="flex flex-col mx-auto text-center text-lg parallax">
+  <div
+    class="px-20 py-10 border-[6px] items-center mx-auto justify-center flex flex-col"
+  >
+    <h2>Perfil do Usuário</h2>
+    
+    <div class="border-[2px] xl:w-[500px] w-[340px] items-center xl:p-10 justify-center flex flex-col">
+      <p>
+        <strong class="font-medium">Id:</strong>
+        {{ userData.userCode }}
+      </p>
+      <p>
+        <strong class="font-medium">Nome:</strong>
+        {{ userData.name }}
+      </p>
+      <p>
+        <strong class="font-medium">Email:</strong>
+        {{ userData.email }}
+      </p>
+      <p>
+        <strong class="font-medium">Idade:</strong>
+        {{ userData.date | age }} anos
+      </p>
+      <p>
+        <strong class="font-medium">Peso:</strong>
+        {{ userData.weight }} kgs
+      </p>
+      <p>
+        <strong class="font-medium">Altura:</strong>
+        {{ userData.height | height }}
+      </p>
+      <p>
+        <strong class="font-medium">Endereço:</strong>
+        {{ userAddress }}
+      </p>
+    </div>
+  </div>
+</section>
