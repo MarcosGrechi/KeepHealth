@@ -4,11 +4,12 @@ import { AddressService } from '../../shared/services/address/address.service';
 import { AgePipe } from '../../shared/pipes/age.pipe';
 import { HeightPipe } from '../../shared/pipes/height.pipe';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, AgePipe, HeightPipe, FormsModule],
+  imports: [CommonModule, AgePipe, HeightPipe, FormsModule, HeaderComponent],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })

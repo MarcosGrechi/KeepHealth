@@ -6,3 +6,14 @@
   min-height: 100vh; 
   width: 100%;
 }
+
+
+/* Estilos para a mensagem de boas-vindas */
+.welcome-message {
+  font-size: 24px; /* Tamanho da fonte */
+  font-weight: bold; /* Peso da fonte */
+  color: #333; /* Cor do texto */
+  margin-bottom: 20px; /* Margem inferior */
+  text-align: center; /* Alinhamento do texto */
+  margin: 200px auto;
+}
