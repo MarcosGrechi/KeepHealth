@@ -1,102 +1,54 @@
-import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterLink
-],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit{
 
-  loginForm = new FormGroup(
-    {
-      email: new FormControl(""), //  [Validators.required, ]
-      password: new FormControl("")
-    }
-  )
-  usersList: any[];
-  // localStorage;
+export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) {
-    // this.localStorage = document.defaultView?.localStorage; // workaround para utilizar DOM com SSR ativado
-    this.usersList = this.getUsers();
-  };
+  loginForm!: FormGroup;
 
-  ngOnInit(): void {
+  constructor(private router: Router) { }
+
+  ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.loginForm = new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl(''),
+    });
+  }
+
+  onSubmit() {
+    const storedData = JSON.parse(localStorage.getItem('cadastroData') || '{}');
     
-    this.usersList = this.getUsers();
+    const email = this.loginForm.get('email')?.value;
+    const password = this.loginForm.get('password')?.value;
     
-    const logged = this.usersList.find((user: { auth: boolean; }) => user.auth == true);
-    if(logged) {
-      console.log("Redirecionando para home.")
-      this.router.navigate([""]);
-    }
-  };
-
- 
-
-  getUsers(){ // : string[]
-    const users = localStorage.getItem("users");
-    if (!!users) {
-      return JSON.parse(users);
+    if (storedData.email === email && storedData.senha === password) {
+      this.router.navigate(['/perfil'], { state: { userData: storedData } });
     } else {
-      localStorage.setItem("users", JSON.stringify([]));
-      return [];
-    };
-  }
-
-  signIn() {
-  const email = this.loginForm.value.email;
-  const password = this.loginForm.value.password;
-  
-  if (!email || !password) {
-    alert("Por favor, preencha todos os campos.");
-    return;
-  }
-  
-  const user = this.authService.authenticateEmail(email, this.usersList);
-  
-  if (user) {
-    const pass = this.authService.authenticatePassword(user, password);
-    
-    if (pass) {
-      user.auth = true;
-      localStorage.setItem("users", JSON.stringify(this.usersList));
-      this.router.navigate(["/home"]);
-      console.log("Você está logado.");
-    } else {
-      alert("Senha incorreta!");
+      alert('Usuário ou senha inválidos');
     }
-  } else {
-    alert("E-mail do usuário inexistente!");
   }
-}
 
-forgotPassword() {
-  const email = this.loginForm.value.email;
-  if (email) {
-    let user = this.usersList.find((user: { email: string | null | undefined; }) => user.email == email);
-    if (user) {
-      user.password = "123"; // Define a senha para "123"
-      localStorage.setItem("users", JSON.stringify(this.usersList)); // Atualiza o localStorage com a nova senha
-      alert("Sua senha foi alterada para: 123"); // Exibe um alerta com a nova senha
-    } else {
-      alert("E-mail do usuário inexistente!");
-    }
-  } else {
-    alert("Preencha o campo E-mail!");
+  esqueciSenha() {
+    const storedData = JSON.parse(localStorage.getItem('cadastroData') || '{}');
+    storedData.senha = 'a1b2c4d4';
+    localStorage.setItem('cadastroData', JSON.stringify(storedData));
+    alert('Sua senha foi alterada para a senha padrão: a1b2c4d4. Por favor, prossiga utilizando essa senha.');
   }
-}
 
+  redirectToCadastro() {
+    this.router.navigate(['/home']);
+  }
 
 }

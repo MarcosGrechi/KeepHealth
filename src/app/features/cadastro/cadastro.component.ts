@@ -1,101 +1,64 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CustomValidatorService } from '../../shared/services/validator/custom-validator.service';
+import { Router } from '@angular/router';
+import { AgePipe } from '../../shared/pipes/age.pipe';
+import { HeightPipe } from '../../shared/pipes/height.pipe';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, CommonModule, AgePipe, HeightPipe], //Importação do Modulo de Reative Forms
+  providers: [CustomValidatorService],
   templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.css'
+  styleUrl: './cadastro.component.scss'
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent {
+  form = new FormGroup({
+    nome: new FormControl('', [Validators.required, this.customValidatorService.validarNomeCompleto()]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    dataNascimento: new FormControl('', Validators.required),
+    peso: new FormControl('', [Validators.required, Validators.max(300)]),
+    altura: new FormControl('', [Validators.required, Validators.max(280)]),
+    senha: new FormControl('', [Validators.minLength(4), Validators.required]),
+    confirmarSenha: new FormControl('', [Validators.minLength(4), Validators.required]),
+    codigoUsuario: new FormControl('')
+  });
 
-  cadastroForm = new FormGroup(
-    {
-      name: new FormControl(""),
-      email: new FormControl(""),
-      weight: new FormControl(""),
-      height: new FormControl(""),
-      birthdate: new FormControl(""),
-      cep: new FormControl(""),
-      password: new FormControl(""),
-      confirm_password: new FormControl("")
-    }
-  )
-  usersList: any[] = this.getUsers();
+  constructor(
+    private customValidatorService: CustomValidatorService,
+    private Router: Router) { }
 
-  constructor(private router: Router) { };
+  cadastrar() {
+    if (this.form.valid && this.form.value.senha === this.form.value.confirmarSenha) {
+      const userCode = Math.floor(1000 + Math.random() * 9000);
 
-  ngOnInit(): void {
-    this.usersList = this.getUsers();
-  };
 
-  getUsers(){ // : string[]
-    const users = localStorage.getItem("users");
-    if (!!users) {
-      return JSON.parse(users);
+      const formData = this.form.value;
+
+      localStorage.setItem('cadastroData', JSON.stringify(formData))
+      
+      this.form.controls['nome'].setValue('');
+      this.form.controls['email'].setValue('');
+      this.form.controls['dataNascimento'].setValue('');
+      this.form.controls['peso'].setValue('');
+      this.form.controls['altura'].setValue('');
+      this.form.controls['senha'].setValue('');
+      this.form.controls['confirmarSenha'].setValue('');
+
+      this.Router.navigate(['/login']);
+
     } else {
-      localStorage.setItem("users", JSON.stringify([]));
-      return [];
-    };
-  }
-
-  authenticateEmail(email: string | null | undefined) {
-    this.usersList = this.getUsers();
-    return this.usersList.find((user: {
-      email: string | null | undefined;
-    }) => {
-      if(user.email == email) {
-        return user;
-      }
-      return undefined;
-    });;
-  }
-
-  cadastro(){
-    const inputs = [
-      { "name": this.cadastroForm.value.name },
-      { "E-mail": this.cadastroForm.value.email },
-      { "Weight": Number(this.cadastroForm.value.weight) },
-      { "Height": Number(this.cadastroForm.value.height) },
-      { "Birthdate" : this.cadastroForm.value.birthdate },
-      { "CEP" : this.cadastroForm.value.cep },
-      { "Password": this.cadastroForm.value.password },
-      { "Confirm Password": this.cadastroForm.value.confirm_password },
-    ]
-
-    const checkFormInputs = inputs.find((input) => {
-      if(!Object.values(input)[0]) {
-        alert(`Fill ${Object.keys(input)} field!`);
-        return true;
-      }
-      return false;
-    });
-
-    if (!checkFormInputs){
-      if(inputs[3]["Password"] === inputs[4]["Confirm Password"]) {
-        if(this.authenticateEmail(inputs[1]["E-mail"])) {
-          alert("User E-mail already taken!");
-        } else {
-          const newUser = {
-            name: inputs[0]["name"],
-            email: inputs[1]["E-mail"],
-            weight: inputs[2]["Weight"],
-            height: inputs[3]["Height"],
-            birthdate: inputs[4]["Birthdate"],
-            cep: inputs[5]["CEP"],
-            password: inputs[6]["Password"],
-            auth: false
-          };
-          this.usersList.push(newUser);
-          localStorage.setItem("users", JSON.stringify(this.usersList));
-          alert("Usuario criado!");
-          this.cadastroForm.reset();
-        }
-      } else {
-        alert("As senhas não correspondem!");
-      }
+      alert('forumulario invalido')
     }
   }
+
+  
+
+  goToLogin(){
+    this.Router.navigate(['/login']);
+  }
+
 }

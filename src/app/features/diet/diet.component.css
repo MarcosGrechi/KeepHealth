@@ -1,91 +1,124 @@
+/* App Header (assuming basic styling) */
+app-header {
+  /* Add your styles for app-header here */
+}
 
-/* Estilização da Barra de Pesquisa */
+/* Main container with parallax effect */
+.parallax {
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+/* Content container */
+.container {
+  width: 300px; /* Adjust width as needed */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Search input */
 .search-input {
-  background-color: #b3909000; /* Cor de fundo */
-  border: none; /* Remover borda padrão */
-  color: #ffffff; /* Cor do texto */
-  font-family: Arial, sans-serif; /* Fonte */
-  font-size: 16px; /* Tamanho da fonte */
-  padding: 10px; /* Espaçamento interno */
-  width: 50%; /* Largura */
-  transition: 0.3s ease-in-out; /* Efeito de transição */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  background-color: #fff;
 
+  /* Placeholder styles */
+  &::placeholder {
+    color: #979797;
+    opacity: 0.8;
+  }
+
+  /* Focus styles */
   &:focus {
-    outline: none; /* Remover borda de foco */
-    background-color: #ccc7c5; /* Cor de fundo ao focar */
+    border-color: #999;
   }
 }
 
-/* Estilização do Container dos Cards */
-
+/* Card container */
 .card-container {
-  display: flex; /* Layout flexbox */
-  flex-wrap: wrap; /* Quebrar linhas automaticamente */
-  justify-content: space-between; /* Alinhar horizontalmente */
-  align-items: flex-start; /* Alinhar verticalmente */
-  max-width: 1200px; /* Largura máxima */
-  margin: 0 auto; /* Centralizar o container */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 500px; /* Adjust as needed */
 }
 
-/* Estilização dos Cards */
-
+/* Individual card styles */
 .card {
-  background-color: #d5b7ae; /* Cor de fundo */
-  border: 6px solid #ff000026; /* Borda */
-  border-radius: 20px; /* Arredondamento dos cantos */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
-  margin: 10px; /* Espaçamento entre os cards */
-  padding: 20px; /* Espaçamento interno */
-  text-align: center; /* Alinhamento do texto */
-  width: 400px; /* Largura */
-  transition: 0.3s ease-in-out; /* Efeito de transição */
-
-  &:hover {
-    transform: scale(1.05); /* Aumentar o tamanho ao passar o mouse */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
-  }
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
-/* Estilização do Título do Card */
+/* Card hover effects */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
 
+/* Card title */
 .card-title {
-  color: #000000; /* Cor do texto */
-  font-family: Arial, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif sans-serif; /* Fonte */
-  font-size: 24px; /* Tamanho da fonte */
-  font-weight: bold; /* Peso da fonte */
-  margin-bottom: 10px; /* Espaçamento inferior */
+  font-size: 1.2rem; /* Adjust as needed */
+  font-weight: bold;
+  font-style: normal;
+  margin-bottom: 1rem;
+  color: #2d3436;
 }
 
-/* Estilização da Descrição do Card */
-
-.card-description {
-  color: #000000; /* Cor do texto */
-  font-family: Arial, sans-serif; /* Fonte */
-  font-size: 16px; /* Tamanho da fonte */
-  line-height: 1.5; /* Espaçamento entre linhas */
-  margin-bottom: 20px; /* Espaçamento inferior */
-}
-
-/* Estilização do Botão "Detalhes" */
-
-.card-button {
-  background-color: #f5262659; /* Cor de fundo */
-  border: none; /* Remover borda padrão */
-  color: #ffffff; /* Cor do texto */
-  font-family: Arial, sans-serif; /* Fonte */
-  font-size: 18px; /* Tamanho da fonte */
-  font-weight: bold; /* Peso da fonte */
-  padding: 10px 20px; /* Espaçamento interno */
-  border-radius: 10px; /* Arredondamento dos cantos */
-  cursor: pointer; /* Indicar que é um botão */
-  transition: 0.3s ease-in-out; /* Efeito de transição */
-
-  &:hover {
-    background-color: #ff0000; /* Cor de fundo ao passar o mouse */
-    color: #fff; /* Cor do texto ao passar o mouse */
-  }
-}
+/* Card image */
 .img-rounded {
-  border-radius: 15%; /* Set the desired roundness (adjust the value for different shapes) */
+  border-radius: 10px;
+  max-width: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Card description */
+.card-description {
+  max-width: 96px; /* Adjust as needed */
+  font-weight: normal;
+  color: #979797;
+  line-height: 1.5;
+  margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Card button */
+.card-button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-style: normal;
+  color: #2d3436;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+
+  /* Hover styles */
+  &:hover {
+    background-color: #c9d1d9;
+    border-color: #999;
+  }
 }

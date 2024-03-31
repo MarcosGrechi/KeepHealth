@@ -1,9 +1,119 @@
-.parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh; 
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Fonte principal */
+  body {
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  
+  /* Layout geral do container */
+  .container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    margin: 0 auto;
+  }
+  
+  
+  /* Conteúdo do perfil */
+  .content {
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  /* Título do perfil */
+.content h2 {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Container do perfil */
+  .profile-container {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Lista de dados do usuário */
+  #cadastroList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #cadastroList p {
+    margin-bottom: 5px;
+  }
+  
+  /* Label de CEP */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  /* Input de CEP */
+  input {
     width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+  
+    /* Estilo de foco */
+    &:focus {
+      border-color: #999;
+    }
+  }
+  
+  /* Botão de busca */
+  .form-btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+  
+    /* Estilos de hover e active */
+    &:hover {
+      background-color: #ddd;
+    }
+  
+    &:active {
+      background-color: #ccc;
+    }
+  }
+  
+  /* Endereço encontrado */
+  .showAddress {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  /* Media queries para responsividade */
+@media (max-width: 768px) {
+    .container {
+      width: 100%;
+    }
+  
+    .content {
+      width: 90%;
+    }
   }
   

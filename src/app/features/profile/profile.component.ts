@@ -1,32 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '..//../shared/components/header/header.component';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit, Input } from '@angular/core';
+import { AddressService } from '../../shared/services/address/address.service';
 import { AgePipe } from '../../shared/pipes/age.pipe';
 import { HeightPipe } from '../../shared/pipes/height.pipe';
-import { CepService } from '../../shared/services/address/address.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
+  imports: [CommonModule, AgePipe, HeightPipe, FormsModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss',
-  imports: [HeaderComponent, AgePipe, HeightPipe],
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  userData: any;
-  userAddress: string | undefined;
+  @Input() userData: any; // Receive user data as input
+  cep = "";
+  address = "";
+  showAddress = false;
 
-  constructor(private cepService: CepService) {} // Injete o serviço
+  constructor(private addressService: AddressService) {}
 
   ngOnInit(): void {
-    this.userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    this.getAddress(this.userData.location);
+    if (this.userData) { // Check if user data is provided
+      // If userData is available, no need to retrieve from localStorage
+    } else {
+      const storedData = localStorage.getItem('cadastroData');
+      if (storedData) {
+        this.userData = JSON.parse(storedData);
+      } else {
+        console.error("No profile data found in localStorage.");
+      }
+    }
   }
 
-  getAddress(cep: string) {
-    this.cepService.get(cep).subscribe((data: any) => {
-      if (!data.erro) {
-        this.userAddress = `${data.logradouro}, ${data.complemento} - ${data.bairro} - ${data.localidade}/${data.uf}`;
-      }
+  searchAddress(): void {
+    this.addressService.get(this.cep).subscribe(data => {
+      this.address = `${data.logradouro} - ${data.bairro} - ${data.localidade}/${data.uf}`;
+      this.showAddress = true;
     });
   }
 }

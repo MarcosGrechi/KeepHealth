@@ -1,41 +1,14 @@
-<section class="feature">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-7 col-lg-5">
-        <div class="login-wrap p-4 p-md-5">
-          <h3 class="mb-4 text-center">LOGIN</h3>
-          <form class="signin-form" (ngSubmit)="signIn()" [formGroup]="loginForm">
-            <div class="form-group mt-3"> <!-- Adicionado mt-3 -->
-              <input
-                id="email-field"
-                type="text"
-                class="form-control"
-                required
-                formControlName="email"
-              >
-              <label class="form-control-placeholder" for="email-field">E-mail</label>
-            </div>
-            <div class="form-group">
-              <input
-                id="password-field"
-                type="password"
-                class="form-control"
-                required
-                formControlName="password"
-                >
-              <label class="form-control-placeholder" for="password-field">Senha</label>
-              <span toggle="#password-field" class="fa fa-fw fa-eye toggle-password"></span>
-            </div>
-            <div class="form-group mt-3"> <!-- Adicionado mt-3 -->
-              <button type="submit" class="form-control btn btn-primary rounded submit px-3">Entrar</button>
-            </div>
-          </form>
-          <p class="text-center mt-3"> <!-- Adicionado mt-3 -->
-<button type="button" (click)="forgotPassword()" class="btn btn-secondary">Esqueceu a senha</button>
-          </p>
-          <p class="text-center"><a data-toggle="tab" routerLink="/cadastro">Cadastre-se</a></p>
-        </div> <!-- login-wrap -->
-      </div> <!-- col-md-7 -->
-    </div> <!-- row -->
-  </div> <!-- container -->
-</section>
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="form-content">
+  <fieldset>
+      <h2>Login</h2>
+      <label for="email">Endereço de email: <input id="email" name="email" type="text" formControlName="email"></label>
+      <label for="password">Senha: <input id="password" name="password" type="password" formControlName="password"></label>
+  </fieldset>
+  <fieldset class="form-btn">
+    <button routerLink="/home">Entrar</button>
+      <button type="form-btn" (click)="esqueciSenha()">Esqueci minha senha</button>
+      <div class="link-cadastro">
+          <a routerLink="/cadastro">Cadastrar-me</a>
+      </div>
+  </fieldset>
+</form>
