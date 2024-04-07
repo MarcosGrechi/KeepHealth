@@ -1,0 +1,101 @@
+// KeepHealth\src\assets\_mixins.scss
+  @mixin hover {
+    scale: 1.1;
+    cursor: pointer;
+  }
+  
+  @mixin erro-control {
+    label, span {
+      color: red;
+    }
+  
+    input {
+      border-color: red;
+    }
+  }
+
+  @mixin mobile {
+
+    /* Base */
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile (até 480px) */
+@media (max-width: 480px) {
+  header {
+    font-size: 18px;
+  }
+  
+  .destaques {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .conteudo {
+    margin-top: 20px;
+  }
+}
+
+  }
+
+  @mixin tablet {
+    @media (min-width: 480px) and (max-width: 768px) {
+      header {
+        font-size: 20px;
+      }
+      
+      .destaques {
+        display: flex;
+        flex-direction: row;
+      }
+      
+      .conteudo {
+        margin-top: 30px;
+      }
+    }
+    
+  }
+
+  @mixin desktop {
+    @media (min-width: 768px) {
+      header {
+        font-size: 24px;
+      }
+      
+      .destaques {
+        display: flex;
+        flex-direction: row;
+      }
+      
+      .conteudo {
+        margin-top: 40px;
+      }
+    }
+    
+  }
+
+  @mixin wide {
+    @media (min-width: 1024px) {
+      header {
+        font-size: 24px;
+      }
+      
+      .destaques {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      
+      .conteudo {
+        margin-top: 50px;
+        column-count: 3;
+      }
+    }
+    
+  }
+    

@@ -69,12 +69,12 @@
   transform: translateZ(0); /* Correção para animação suave no hover */
   transition: all 0.3s ease-in-out; /* Transição suave em todas as propriedades */
   cursor: pointer; /* Cursor do mouse */
-}
 
-/* Efeitos de hover do cartão */
-.card:hover {
-  transform: scale(1.05); /* Aumenta ligeiramente o tamanho do cartão */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
+  /* Efeitos de hover do cartão */
+  &:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho do cartão */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
+  }
 }
 
 /* Título do cartão */

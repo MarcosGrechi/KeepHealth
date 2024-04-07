@@ -1,122 +1,80 @@
 <div class="cadastro">
   <h2>Cadastro</h2>
-  <form (ngSubmit)="cadastrar()" [formGroup]="form"> <!-- Vinculo ao form group -->
-    <div class="elemento-formulario" [ngClass]="{'erro-formulario': (form.controls.nome.dirty ||
-        form.controls.nome.touched) &&
-        form.controls.nome.errors}">
-      <label for="nome">Nome completo:<input type="text" name="nome" formControlName="nome"></label>
+  <form (ngSubmit)="cadastro()" [formGroup]="form">
+    <div class="imput-form" [ngClass]="{'erro': form.controls.nome.errors}">
 
-      <span *ngIf="(form.controls.nome.dirty ||
-            form.controls.nome.touched) &&
-            form.controls.nome.errors &&
-            form.controls.nome.errors['required']">
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" formControlName="nome">
+      <span *ngIf="form.controls.nome.errors">
         *Preenchimento obrigatório
       </span>
-      <span *ngIf="(form.controls.nome.dirty ||
-            form.controls.nome.touched) &&
-            form.controls.nome.errors &&
-            form.controls.nome.errors['validarNomeCompleto']">
-        *Por favor, insira seu nome completo
-      </span>
-    </div>
-    <div class="elemento-formulario" [ngClass]="{'erro-formulario': (form.controls.email.dirty ||
-      form.controls.email.touched) &&
-      form.controls.email.errors}">
-      <label for="email">Email:<input type="text" name="email" formControlName="email"></label>
-
-      <span *ngIf="(form.controls.email.dirty ||
-          form.controls.email.touched) &&
-          form.controls.email.errors &&
-          form.controls.email.errors['required']">
-        Preenchimento obrigatório
+      <span *ngIf="form.controls.nome.errors">
+        *Insira seu nome
       </span>
     </div>
 
-    <div class="elemento-formulario" [ngClass]="{'erro-formulario': (form.controls.dataNascimento.dirty ||
-    form.controls.dataNascimento.touched) &&
-    form.controls.dataNascimento.errors}">
-
-      <label for="dataNascimento">Data de nascimento:<input type="date" name="dataNascimento"
-          formControlName="dataNascimento"></label>
-
-      <span *ngIf="form.controls.dataNascimento.dirty &&
-      form.controls.dataNascimento.touched &&
-      form.controls.dataNascimento.errors &&
-      form.controls.dataNascimento.errors['required']">
-        Preenchimento obrigatório
+    <div class="imput-form" [ngClass]="{'erro': form.controls.email.errors}">
+      <label for="email">Email:</label>
+      <input type="text" name="email" formControlName="email">
+      <span *ngIf="form.controls.email.errors">
+        *Preenchimento obrigatório
       </span>
-
-    </div>
-
-    <div class="elemento-formulario" [ngClass]="{'erro-formulario': (form.controls.peso.dirty ||
-    form.controls.peso.touched) &&
-    form.controls.peso.errors}">
-
-      <label for="peso">Peso(kg):<input type="number" name="peso" formControlName="peso"></label>
-
-      <span *ngIf="form.controls.peso.dirty &&
-      form.controls.peso.touched &&
-      form.controls.peso.errors &&
-      form.controls.peso.errors['required']">
-        Preenchimento obrigatório
-      </span>
-
-    </div>
-
-    <div class="elemento-formulario" [ngClass]="{'erro-formulario': (form.controls.altura.dirty ||
-    form.controls.altura.touched) &&
-    form.controls.altura.errors}">
-
-      <label for="altura">Altura(cm):<input type="number" name="altura" formControlName="altura"></label>
-
-      <span *ngIf="form.controls.altura.dirty &&
-      form.controls.altura.touched &&
-      form.controls.altura.errors &&
-      form.controls.altura.errors['required']">
-        Preenchimento obrigatório
+      <span *ngIf="form.controls.email.errors && form.controls.email.errors['email']">
+        *Email inválido
       </span>
     </div>
 
-    <div class="elemento-formulario" [ngClass]="{'erro-formulario': (form.controls.senha.dirty ||
-    form.controls.senha.touched) &&
-    form.controls.senha.errors}">
-      <label for="senha">Senha:<input type="password" name="senha" formControlName="senha"></label>
-
-      <span *ngIf="form.controls.senha.dirty &&
-          form.controls.senha.touched &&
-          form.controls.senha.errors &&
-          form.controls.senha.errors['minlength']">
-        A senha deve conter ao menos 4 caracteres
-      </span>
-      <span *ngIf="form.controls.senha.dirty &&
-          form.controls.senha.touched &&
-          form.controls.senha.errors &&
-          form.controls.senha.errors['required']">
-        Preenchimento obrigatório
+    <div class="imput-form" [ngClass]="{'erro': form.controls.peso.errors}">
+      <label for="peso">Peso(kg):</label>
+      <input type="number" name="peso" formControlName="peso">
+      <span *ngIf="form.controls.peso.errors">
+        *Preenchimento obrigatório
       </span>
     </div>
-    <div class="elemento-formulario" [ngClass]="{'erro-formulario': (form.controls.confirmarSenha.dirty ||
-    form.controls.confirmarSenha.touched) &&
-    form.controls.confirmarSenha.errors}">
-      <label for="confirmarSenha">Confirmar senha:<input type="password" name="confirmarSenha"
-          formControlName="confirmarSenha"></label>
 
-      <span *ngIf="form.controls.confirmarSenha.dirty &&
-          form.controls.confirmarSenha.touched &&
-          form.controls.confirmarSenha.errors &&
-          form.controls.confirmarSenha.errors['minlength']">
-        A senha deve conter ao menos 4 caracteres
-      </span>
-      <span *ngIf="form.controls.confirmarSenha.dirty &&
-          form.controls.confirmarSenha.touched &&
-          form.controls.confirmarSenha.errors &&
-          form.controls.confirmarSenha.errors['required']">
-        Preenchimento obrigatório
+    <div class="imput-form" [ngClass]="{'erro': form.controls.altura.errors}">
+      <label for="altura">Altura(cm):</label>
+      <input type="number" name="altura" formControlName="altura">
+      <span *ngIf="form.controls.altura.errors">
+        *Preenchimento obrigatório
       </span>
     </div>
+
+    <div class="imput-form" [ngClass]="{'erro': form.controls.dataNascimento.errors}">
+      <label for="dataNascimento">Data de nascimento:</label>
+      <input type="date" name="dataNascimento" formControlName="dataNascimento">
+      <span *ngIf="form.controls.dataNascimento.errors">
+        *Preenchimento obrigatório
+      </span>
+    </div>
+
+    <div class="imput-form" [ngClass]="{'erro': form.controls.senha.errors}">
+      <label for="senha">Senha:</label>
+      <input type="password" name="senha" formControlName="senha">
+      <span *ngIf="form.controls.senha.errors">
+        *A senha deve conter ao menos 6 caracteres
+      </span>
+      <span *ngIf="form.controls.senha.errors">
+        *Preenchimento obrigatório
+      </span>
+    </div>
+
+    <div class="imput-form" [ngClass]="{'erro': form.controls.confirmarSenha.errors}">
+      <label for="confirmarSenha">Confirmar senha:</label>
+      <input type="password" name="confirmarSenha" formControlName="confirmarSenha">
+      <span *ngIf="form.controls.confirmarSenha.errors">
+        *A senha deve conter ao menos 6 caracteres
+      </span>
+      <span *ngIf="form.controls.confirmarSenha.errors">
+        *Preenchimento obrigatório
+      </span>
+      <span *ngIf="form.controls.confirmarSenha.errors">
+        *As senhas não coincidem
+      </span>
+    </div>   
     <div class="form-btn">
       <button type="submit">Cadastrar</button>
-      <button type="button" (click)="goToLogin()">
+      <button type="button" (click)="voltar()">
         Voltar</button>
     </div>
   </form>

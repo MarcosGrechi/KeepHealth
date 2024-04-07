@@ -1,14 +1,17 @@
+<div class="container">
+<h1 class="titulo-keep-health">KEEP HEALTH</h1>
 <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="form-content">
-  <fieldset>
-      <h2>Login</h2>
-      <label for="email">Endereço de email: <input id="email" name="email" type="text" formControlName="email"></label>
-      <label for="password">Senha: <input id="password" name="password" type="password" formControlName="password"></label>
-  </fieldset>
-  <fieldset class="form-btn">
+  <div>
+    <h2>Login</h2>
+    <label for="email">Endereço de email: <input id="email" name="email" type="text" formControlName="email"></label>
+    <label for="password">Senha: <input id="password" name="password" type="password" formControlName="password"></label>
+  </div>
+  <div class="form-btn">
     <button routerLink="/home">Entrar</button>
-      <button type="form-btn" (click)="esqueciSenha()">Esqueci minha senha</button>
-      <div class="link-cadastro">
-          <a routerLink="/cadastro">Cadastrar-me</a>
-      </div>
-  </fieldset>
+    <button type="form-btn" (click)="esqueciSenha()">Esqueci minha senha</button>
+    <div class="link-cadastro">
+      <a routerLink="/cadastro">Cadastrar-me</a>
+    </div>
+  </div>
 </form>
+</div>

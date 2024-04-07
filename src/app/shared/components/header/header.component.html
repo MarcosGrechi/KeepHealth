@@ -1,11 +1,12 @@
-<div class="header">
+<header class="header">
   <div class="wrapper">
-  <a routerLink="" class="titulo"><h1>Keep Health</h1></a>
-  <nav class="nav">
+    <h1 class="titulo">Keep Health</h1>
+    <nav class="nav">
       <a routerLink="/home">Início</a>
       <a routerLink="/diet">Dietas</a>
+      <a routerLink="/exercicios">Exercícios</a>
       <a routerLink="/profile">Perfil</a>
-      <a routerLink="/login">Login</a>
+      <button (click)="onLogoutClick()">Sair</button>
     </nav>
   </div>
-</div> 
+</header>

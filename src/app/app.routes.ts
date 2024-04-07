@@ -5,16 +5,20 @@ import { HomeComponent } from './features/home/home.component';
 import { LoginComponent } from './features/login/login.component';
 import { ProfileComponent } from './features/profile/profile.component';
 import { CadastroComponent} from './features/cadastro/cadastro.component';
+import { ExerciciosComponent } from './features/exercicios/exercicios.component';
+import { authGuard } from './shared/auth.guard';
+import { DietDetailGuard } from './shared/services/permissions.service';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: "login",
+    redirectTo: "home",
     pathMatch: "full"
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'login',
@@ -26,14 +30,25 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [authGuard]
   },
   {
-    path: 'diet',
-    children: [
-      { path: '', component: DietComponent },
-      { path: ':id', component: DietDetailComponent },
-    ]
+    path: 'exercicios',
+    component: ExerciciosComponent,
+    canActivate: [authGuard]
   },
+  
+  {
+    path: "diet",
+    component: DietComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: "diet",
+    canActivateChild: [DietDetailGuard],
+    loadChildren: () => import('./features/diet/diet.module').then(m => m.DietModule),
+
+},
  
 ]

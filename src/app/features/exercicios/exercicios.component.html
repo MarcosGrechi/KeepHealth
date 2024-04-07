@@ -1,0 +1,100 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row-header">
+        <div>
+            <h2 class="heading-section">Lista de exercícios</h2>
+        </div>
+        <div class="headerButton">
+            <button pButton type="button" label="Add New" icon="pi pi-plus" (click)="showDialog()" class="addNew">Add New</button>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        @if(exerciseList.length !== 0){
+        <div class="grid-section">
+            
+                
+                @for (item of exerciseList; track $index){
+                <div class="card">
+                    <div class="cardheader">
+                        <div class="row">
+                            <div class="col-12 tituloEsporte">
+                                {{ item.exercise }}
+                            </div>
+                            <div class="col-12 data">
+                                {{ item.date | date:'dd-MM-yyyy' }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="exercise-details">
+                            <div class="exercise-image">
+                                <img [src]="getExerciseImage(item.exercise)" alt="Exercise Image">
+                            </div>
+                            <div class="exercise-info">
+                                <p class="discancia"><strong>Distância(km):</strong> {{ item.distance }} km </p>
+                                <p class="duracao"><strong>Duração(min):</strong> {{ item.time }} min </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Edit</button>
+                        <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Delete</button>
+                    </div>
+                    
+                </div>}
+
+        </div>} @else {
+            <div class="row col-12 p-4 text-center">
+                <p>Nenhum dado encontrado. Cadastre um novo exercício.</p>
+            </div>
+        }
+    </div>
+
+
+<p-dialog header="Cadastrar Exercício" [(visible)]="visible" [modal]="true" [responsive]="true"
+    [style]="{width: '500px'}" class="superModal" (onHide)="closeModal()">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 input-area">
+                        <label for="exerciseSelect">Escolha o exercício:</label>
+                        <select class="form-select" id="exerciseSelect" [(ngModel)]="exerciseObj.exercise">
+                            <option value="" disabled selected>Escolha...</option>
+                            <option value="corrida">corrida</option>
+                            <option value="yoga">yoga</option>
+                            <option value="bicicleta">bicicleta</option>
+                            <option value="esporte">esporte</option>
+                            <option value="natação">natação</option>
+                            <option value="musculação">musculação</option>
+                        </select>
+                    </div>
+                    <div class="col-12 input-area">
+                        <label for="">Data:</label>
+                        <input type="date" [(ngModel)]="exerciseObj.date" class="form-control" placeholder="date">
+                    </div>
+                    <div class="col-6 input-area">
+                        <label for="">Distância(em Km):</label>
+                        <input type="number" [(ngModel)]="exerciseObj.distance" class="form-control"
+                            placeholder="distance">
+                    </div>
+                    <div class="col-6 input-area">
+                        <label for="">Duração(em minutos):</label>
+                        <input type="number" [(ngModel)]="exerciseObj.time" class="form-control" placeholder="time">
+                    </div>
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+                @if (exerciseObj.id == 0){
+                <button type="button" class="btn btn-primary" (click)="saveExercise()">Save Exercise</button>
+                } @else {
+                <button type="button" class="btn btn-success" (click)="updateExercise()">Update Exercise</button>
+                }
+            </div>
+        </div>
+    </div>
+</p-dialog>

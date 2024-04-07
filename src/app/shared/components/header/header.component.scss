@@ -46,3 +46,16 @@
 .nav a:hover {
   color: #979797;
 }
+
+.nav button {
+  background-color: transparent;
+  color: #2d3436;
+  padding: 5px 10px;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.nav button:hover {
+  transition: all 0.3s ease-in-out;
+  color: #979797
+}
