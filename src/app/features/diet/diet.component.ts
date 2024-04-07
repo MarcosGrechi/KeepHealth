@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
+import { DietService } from '../../shared/services/diet.service';
 
 export interface Diets {
   id: number;
@@ -34,6 +35,7 @@ export class DietComponent implements OnInit {
   list: Diets[] = [];
   inputPesquisa = new FormControl('');
 
+  constructor(private router: Router, private dietService: DietService) {}
   ngOnInit() {
     let dietsData = localStorage.getItem('diets');
     if (dietsData) {
@@ -58,7 +60,7 @@ export class DietComponent implements OnInit {
     }
   }
 
-  constructor(private router: Router) {}
+  
   goToDetails(id: number) {
     this.router.navigate(['/diet', id]);
   }

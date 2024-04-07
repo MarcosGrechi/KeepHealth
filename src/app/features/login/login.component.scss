@@ -1,3 +1,19 @@
+.titulo-keep-health {
+  margin-bottom: auto; /* Ajusta a distância do título ao formulário */
+  font-size: 2.5rem; /* Aumenta o tamanho da fonte */
+  font-family: 'Poppins', sans-serif; /* Define uma fonte estilizada */
+  font-weight: bold; /* Torna a fonte mais negrito */
+}
+
+.container {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
 /* Reset de estilos */
 * {
   margin: 0;
@@ -18,12 +34,13 @@ body {
   align-items: center;
   justify-content: center;
   width: 400px;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 50px auto;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 /* Título do formulário */
 h2 {
   text-align: center;
@@ -31,10 +48,9 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* Estilização dos conjuntos de campos */
-fieldset {
-  border: none;
-  margin: 10px 0;
+/* Estilização dos grupos de campos */
+.form-content > div {  
+  margin: 10px 0;  /* Aplica margem para os grupos de div */
 }
 
 /* Etiquetas */
@@ -79,7 +95,7 @@ button {
 }
 
 /* Botão "Esqueci minha senha" */
-.form-btn button:last-of-type {
+.form-btn button:last-child {
   background-color: transparent;
   border: none;
   text-decoration: underline;
@@ -101,19 +117,6 @@ button {
     color: #444;
   }
 }
-/* Media queries para responsividade */
-@media (max-width: 768px) {
-  .form-content {
-    width: 100%;
-  }
-}
 
-/* Placeholder */
-input::-webkit-input-placeholder {
-  color: #ccc;
-}
 
-/* Mensagem de erro de validação */
-.ng-invalid.ng-touched {
-  border-color: red;
-}
+

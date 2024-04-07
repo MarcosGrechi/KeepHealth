@@ -5,9 +5,7 @@ import { AgePipe } from '../../shared/pipes/age.pipe';
 import { HeightPipe } from '../../shared/pipes/height.pipe';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../shared/components/header/header.component';
-
-@Component({
-  selector: 'app-profile',
+@Component({  selector: 'app-profile',
   standalone: true,
   imports: [CommonModule, AgePipe, HeightPipe, FormsModule, HeaderComponent],
   templateUrl: './profile.component.html',
@@ -22,16 +20,8 @@ export class ProfileComponent implements OnInit {
   constructor(private addressService: AddressService) {}
 
   ngOnInit(): void {
-    if (this.userData) { // Check if user data is provided
-      // If userData is available, no need to retrieve from localStorage
-    } else {
-      const storedData = localStorage.getItem('cadastroData');
-      if (storedData) {
-        this.userData = JSON.parse(storedData);
-      } else {
-        console.error("No profile data found in localStorage.");
-      }
-    }
+    const loggedUser = JSON.parse(localStorage.getItem('loggedUser') || '{}');
+    this.userData = loggedUser;
   }
 
   searchAddress(): void {

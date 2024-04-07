@@ -1,0 +1,147 @@
+ 
+  /* Estilo para o contêiner principal */
+  .container {
+    width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px; /* Arredondamento das bordas */
+    background-color: #fff; /* Fundo branco */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Estilo para a seção do cabeçalho */
+  .row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .heading-section {
+    font-size: 24px;
+  }
+  
+  .headerButton {
+    margin-left: 20px;
+  }
+  
+  .addNew {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px; /* Arredondamento das bordas */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addNew:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para o contêiner de cartões */
+  .grid-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Estilo individual do cartão */
+  .card {
+    background-color: #fff; 
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Arredondamento das bordas */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cardheader {
+    margin-bottom: 10px;
+  }
+  
+  .tituloEsporte {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .data {
+    color: #666;
+  }
+  
+  .exercise-image img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  /* Estilo para o modal */
+  .superModal {
+    .modal-dialog {
+      .modal-content {
+        border-radius: 10px; /* Arredondamento das bordas */
+        background-color: #fff; /* Fundo branco */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  
+        .modal-body {
+          label {
+            font-weight: bold;
+          }
+          input[type="date"],
+          input[type="number"],
+          select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px; /* Arredondamento das bordas */
+            border: 1px solid #ddd;
+            transition: border-color 0.3s ease;
+          }
+          input[type="date"]:focus,
+          input[type="number"]:focus,
+          select:focus {
+            border-color: #007bff;
+            outline: none;
+          }
+        }
+        .modal-footer {
+          button {
+            padding: 10px 20px;
+            border-radius: 5px; /* Arredondamento das bordas */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
+          .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+          }
+          .btn-danger:hover {
+            background-color: #c82333;
+          }
+          .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+          }
+          .btn-primary:hover {
+            background-color: #0056b3;
+          }
+          .btn-success {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+          }
+          .btn-success:hover {
+            background-color: #218838;
+          }
+        }
+      }
+    }
+  }
+  

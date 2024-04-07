@@ -1,3 +1,5 @@
+@import '../../../assets/_mixins.scss';
+
 .parallax {
   background-attachment: fixed;
   background-position: center;
@@ -16,4 +18,12 @@
   margin-bottom: 20px; /* Margem inferior */
   text-align: center; /* Alinhamento do texto */
   margin: 200px auto;
+}
+
+.mixins {
+  @include hover;
+  @include mobile;
+  @include tablet;
+  @include desktop;
+  @include wide;
 }
