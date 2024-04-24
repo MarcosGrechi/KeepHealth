@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     if (user != undefined) { 
       localStorage.setItem('loggedUser', JSON.stringify(user)); 
       this.router.navigate(['/home']); 
-      alert('Usuário ou senha inválidos'); 
+      
     }
   }
 
