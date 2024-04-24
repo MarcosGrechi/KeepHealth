@@ -6,7 +6,7 @@
             <h2 class="heading-section">Lista de exercícios</h2>
         </div>
         <div class="headerButton">
-            <button pButton type="button" label="Add New" icon="pi pi-plus" (click)="showDialog()" class="addNew">Add New</button>
+            <button pButton type="button" label="Add New" icon="pi pi-plus" (click)="showDialog()" class="addNew">Adicionar</button>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -37,16 +37,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-footer text-center">
-                        <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Edit</button>
-                        <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Delete</button>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Editar</button>
+                        <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Deletar</button>
                     </div>
                     
                 </div>}
 
         </div>} @else {
             <div class="row col-12 p-4 text-center">
-                <p>Nenhum dado encontrado. Cadastre um novo exercício.</p>
+                <p>Adicione um novo exercício.</p>
             </div>
         }
     </div>
@@ -63,12 +63,12 @@
                         <label for="exerciseSelect">Escolha o exercício:</label>
                         <select class="form-select" id="exerciseSelect" [(ngModel)]="exerciseObj.exercise">
                             <option value="" disabled selected>Escolha...</option>
-                            <option value="corrida">corrida</option>
-                            <option value="yoga">yoga</option>
-                            <option value="bicicleta">bicicleta</option>
-                            <option value="esporte">esporte</option>
-                            <option value="natação">natação</option>
-                            <option value="musculação">musculação</option>
+                            <option value="corrida">Corrida</option>
+                            <option value="surf">Surf</option>
+                            <option value="bicicleta">Bicicleta</option>
+                            <option value="futebol">Futebol</option>
+                            <option value="natação">Natação</option>
+                            <option value="musculação">Musculação</option>
                         </select>
                     </div>
                     <div class="col-12 input-area">
@@ -88,11 +88,11 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+                <button type="button" class="btn btn-danger" (click)="closeModal()">Fechar</button>
                 @if (exerciseObj.id == 0){
-                <button type="button" class="btn btn-primary" (click)="saveExercise()">Save Exercise</button>
+                <button type="button" class="btn btn-primary" (click)="saveExercise()">Salvar</button>
                 } @else {
-                <button type="button" class="btn btn-success" (click)="updateExercise()">Update Exercise</button>
+                <button type="button" class="btn btn-success" (click)="updateExercise()">Atualizar</button>
                 }
             </div>
         </div>

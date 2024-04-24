@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
  login(user: any): void {
-    const storedData = JSON.parse(localStorage.getItem('cadastroData') || '[]');
+    const storedData = JSON.parse(localStorage.getItem('registerData') || '[]');
     const email = user.email;
     const senha = user.password;
 
