@@ -1,129 +1,112 @@
-/* Estilos para o cabeçalho do aplicativo (assumindo estilização básica) */
-/* app-header {
-  Adicione seus estilos específicos para o cabeçalho do aplicativo aqui
-} */
-
-/* Container principal com efeito de paralaxe */
 .parallax {
-  background-position: center; /* Centraliza a imagem de fundo */
-  background-size: cover; /* Garante que a imagem de fundo cubra todo o container */
-  min-height: 100vh; /* Define a altura mínima do container como a altura da tela */
-  display: flex; /* Utiliza o sistema de layout flexível */
-  justify-content: center; /* Centraliza horizontalmente os itens dentro do container */
-  align-items: center; /* Centraliza verticalmente os itens dentro do container */
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Container de conteúdo */
 .container {
-  width: 1000px; /* Largura do container */
-  margin: 20px auto; /* Margens superior e inferior automáticas e laterais centralizadas */
-  padding: 20px; /* Espaçamento interno do container */
-  border: 1px solid #ddd; /* Borda sólida com cor cinza */
-  border-radius: 4px; /* Borda arredondada */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  display: grid; /* Utiliza grid */
-  place-items: center; /* Centraliza horizontal e verticalmente */
+  width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  place-items: center;
 }
 
-/* Barra de pesquisa */
 .search-input {
-  width: 35%; /* Largura do elemento */
-  padding: 10px; /* Espaçamento interno */
-  border: 1px solid #ccc; /* Borda sólida com cor cinza claro */
-  border-radius: 4px; /* Borda arredondada */
-  font-size: 16px; /* Tamanho da fonte */
-  outline: none; /* Remove o contorno ao focar */
-  background-color: #fff; /* Cor de fundo branca */
+  width: 35%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  background-color: #fff;
+  margin-bottom: 20px;
 
-  /* Estilos do espaço reservado */
   &::placeholder {
-    color: #979797; /* Cor do texto do espaço reservado */
-    opacity: 0.8; /* Opacidade do texto do espaço reservado */
+    color: #979797;
+    opacity: 0.8;
   }
 
-  /* Estilos de foco */
   &:focus {
-    border-color: #999; /* Cor da borda ao focar */
+    border-color: #999;
   }
 }
 
-
-/* Container de cartões */
 .card-container {
-  display: flex; /* Utiliza o sistema de layout flexível */
-  flex-wrap: wrap; /* Quebra para a próxima linha conforme necessário */
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Layout de grade responsivo */
-  gap: 2rem; /* Espaçamento entre os cartões */
-  justify-content: center; /* Centraliza horizontalmente os cartões */
-  align-items: flex-start; /* Alinha os cartões no topo */
-  min-height: 500px; /* Altura mínima do container de cartões */
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 500px;
 }
 
-/* Estilos individuais do cartão */
 .card {
-  background-color: #fff; /* Cor de fundo branca */
-  border: 1px solid #ddd; /* Borda sólida com cor cinza */
-  border-radius: 4px; /* Borda arredondada */
-  padding: 2rem; /* Espaçamento interno do cartão */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  transform: translateZ(0); /* Correção para animação suave no hover */
-  transition: all 0.3s ease-in-out; /* Transição suave em todas as propriedades */
-  cursor: pointer; /* Cursor do mouse */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: translateZ(0);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 
-  /* Efeitos de hover do cartão */
   &:hover {
-    transform: scale(1.05); /* Aumenta ligeiramente o tamanho do cartão */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
   }
 }
 
-/* Título do cartão */
 .card-title {
-  font-size: 1.2rem; /* Tamanho da fonte do título */
-  font-weight: bold; /* Negrito */
-  font-style: normal; /* Estilo normal */
-  margin-bottom: 1rem; /* Espaçamento inferior */
-  color: #2d3436; /* Cor do texto do título */
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: normal;
+  margin-bottom: 1rem;
+  color: #2d3436;
   text-align: center;
 }
 
-/* Imagem do cartão */
-.img-rounded {
-  border-radius: 10px; /* Borda arredondada */
-  max-width: 100%; /* Largura máxima de 100% */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra suave */
+.img {
+  border-radius: 10px;
+  max-width: 100%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Descrição do cartão */
 .card-description {
-  max-width: 200px; /* Largura máxima da descrição */
-  font-weight: normal; /* Peso da fonte normal */
-  color: #979797; /* Cor do texto da descrição */
-  line-height: 1.5; /* Altura da linha */
-  margin: 0 auto; /* Centraliza horizontalmente */
-  overflow: hidden; /* Oculta o conteúdo que ultrapassa */
-  text-overflow: ellipsis; /* Adiciona reticências ao final do texto que ultrapassa */
-  display: -webkit-box; /* Exibe como caixa flexível */
-  -webkit-line-clamp: 2; /* Limita o número de linhas */
-  -webkit-box-orient: vertical; /* Orientação vertical da caixa */
+  max-width: 200px;
+  font-weight: normal;
+  color: #979797;
+  line-height: 1.5;
+  margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-/* Botão do cartão */
 .card-button {
-  padding: 1rem 2rem; /* Espaçamento interno do botão */
-  border: none; /* Sem borda */
-  border-radius: 4px; /* Borda arredondada */
-  font-size: 1rem; /* Tamanho da fonte */
-  font-style: normal; /* Estilo normal */
-  color: #2d3436; /* Cor do texto do botão */
-  background-color: #fff; /* Cor de fundo branca */
-  transition: all 0.3s ease-in-out; /* Transição suave em todas as propriedades */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  border: 1px solid #ddd; /* Borda sólida com cor cinza */
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-style: normal;
+  color: #2d3436;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
 
-  /* Estilos de hover */
   &:hover {
-    background-color: #c9d1d9; /* Cor de fundo ao passar o mouse */
-    border-color: #999; /* Cor da borda ao passar o mouse */
+    background-color: #c9d1d9;
+    border-color: #999;
   }
 }
+

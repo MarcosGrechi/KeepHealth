@@ -1,11 +1,11 @@
 <app-header></app-header>
 
-<div class="mx-auto text-center text-lg parallax ">
-  <div class="flex justify-center flex-col items-center" *ngIf="diet">
-    <h2 class="text-2xl font-bold italic mt-36 mb-2 ">{{diet.name}}</h2>
-    <p class="mt-4 text-sm w-96 font-bold text-gray-600">{{diet.description}}</p>
-    <p class="mt-4 text-sm w-96 font-bold text-gray-600">Calorias: {{diet.qttCalories}}</p>
-    <p class="mt-4 text-sm w-96 font-bold text-gray-600">Dias de alimentação: {{diet.qttDaysFeed}}</p>
-    <img class="w-72 h-44 shadow-lg shadow-slate-700 rounded-3xl mt-5" [src]="diet.imageLink" alt="{{diet.name}}">
+<div class="diet-details">
+  <div class="diet-content" *ngIf="diet">
+    <h2 class="diet-title">{{diet.name}}</h2>
+    <p class="diet-description">{{diet.description}}</p>
+    <p class="diet-calories">Calorias: {{diet.qttCalories}}</p>
+    <p class="diet-days">Dias de alimentação: {{diet.qttDaysFeed}}</p>
+    <img class="diet-image" [src]="diet.imageLink" alt="{{diet.name}}">
   </div>
 </div>

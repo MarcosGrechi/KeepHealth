@@ -5,7 +5,6 @@
   padding: 15px 0;
 }
 
-/* Header wrapper */
 .wrapper {
   display: flex;
   justify-content: space-between;
@@ -14,9 +13,8 @@
   margin: 0 auto;
 }
 
-/* Title */
 .titulo {
-  font-size: 1.5rem; /* Adjust as needed */
+  font-size: 1.5rem;
   font-weight: bold;
   color: #2d3436;
 }
@@ -25,7 +23,6 @@
   margin: 0;
 }
 
-/* Navigation menu */
 .nav {
   display: flex;
   list-style: none;
@@ -33,16 +30,14 @@
   margin: 0;
 }
 
-/* Navigation links */
 .nav a {
   padding: 10px 15px;
   text-decoration: none;
   color: #2d3436;
-  font-size: 0.9rem; /* Adjust as needed */
+  font-size: 0.9rem; 
   transition: all 0.3s ease-in-out;
 }
 
-/* Navigation links hover effect */
 .nav a:hover {
   color: #979797;
 }

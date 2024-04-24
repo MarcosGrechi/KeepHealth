@@ -3,6 +3,43 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh; 
+  min-height: 100vh;
   width: 100%;
+}
+
+.diet-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.diet-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.diet-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.diet-calories,
+.diet-days {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.diet-image {
+  width: 200px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
 }

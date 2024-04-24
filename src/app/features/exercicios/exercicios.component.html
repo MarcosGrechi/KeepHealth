@@ -1,100 +1,45 @@
 <app-header></app-header>
 
 <div class="container">
-    <div class="row-header">
-        <div>
-            <h2 class="heading-section">Lista de exercícios</h2>
-        </div>
-        <div class="headerButton">
-            <button pButton type="button" label="Add New" icon="pi pi-plus" (click)="showDialog()" class="addNew">Adicionar</button>
+    <h2>Lista de exercícios</h2>
+    <button pButton type="button" label="Adicionar atividade" icon="pi pi-plus" (click)="showDialog()" class="addNew">Adicionar atividade</button>
+
+    <div class="card-container">
+        <div *ngFor="let activity of activities" class="card">
+            <img class="card-img-top" [src]="getActivityImage(activity.type)" alt="Atividade">
+            <div class="card-body">
+                <h5 class="card-title">{{ activity.type }}</h5>
+                <p class="card-text">Data: {{ activity.date }}</p>
+                <p class="card-text" *ngIf="activity.distance">Distância: {{ activity.distance }} km</p>
+                <p class="card-text" *ngIf="activity.time">Tempo: {{ activity.time }} minutos</p>
+                <button pButton type="button" icon="pi pi-trash" class="deleteButton" (click)="deleteActivity(activity)">Deletar</button>
+            </div>
         </div>
     </div>
-    <div class="row justify-content-center">
-        @if(exerciseList.length !== 0){
-        <div class="grid-section">
+    
+    <p-dialog header="Adicionar Atividade" [(visible)]="displayDialog" [modal]="true" [responsive]="true"
+     [style]="{width: '500px', background: '#0e3b78', color: '#fff', borderRadius: '4px', padding: '20px'}" class="dialog-custom">
+     
+        <div class="modal-body">
+            <label for="activityType">Tipo de atividade:</label>
+            <select id="activityType" [(ngModel)]="newActivity.type" class="form-control">
+                <option *ngFor="let type of activityTypes" [value]="type">{{ type }}</option>
+            </select>
+    
+            <label for="activityDate">Data realizada:</label>
+            <input id="activityDate" type="date" [(ngModel)]="newActivity.date" class="form-control" placeholder="Data realizada">
+    
+            <label for="activityDistance">Distância (opcional):</label>
+            <input id="activityDistance" type="number" [(ngModel)]="newActivity.distance" class="form-control" placeholder="Distância (km)" min="0">
             
-                
-                @for (item of exerciseList; track $index){
-                <div class="card">
-                    <div class="cardheader">
-                        <div class="row">
-                            <div class="col-12 tituloEsporte">
-                                {{ item.exercise }}
-                            </div>
-                            <div class="col-12 data">
-                                {{ item.date | date:'dd-MM-yyyy' }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="exercise-details">
-                            <div class="exercise-image">
-                                <img [src]="getExerciseImage(item.exercise)" alt="Exercise Image">
-                            </div>
-                            <div class="exercise-info">
-                                <p class="discancia"><strong>Distância(km):</strong> {{ item.distance }} km </p>
-                                <p class="duracao"><strong>Duração(min):</strong> {{ item.time }} min </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Editar</button>
-                        <button class="btn btn-sm btn-danger" (click)="onDelete(item)">Deletar</button>
-                    </div>
-                    
-                </div>}
+            <label for="activityTime">Tempo (opcional):</label>
+            <input id="activityTime" type="number" [(ngModel)]="newActivity.time" class="form-control" placeholder="Tempo (minutos)" min="0">
 
-        </div>} @else {
-            <div class="row col-12 p-4 text-center">
-                <p>Adicione um novo exercício.</p>
-            </div>
-        }
-    </div>
-
-
-<p-dialog header="Cadastrar Exercício" [(visible)]="visible" [modal]="true" [responsive]="true"
-    [style]="{width: '500px'}" class="superModal" (onHide)="closeModal()">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-12 input-area">
-                        <label for="exerciseSelect">Escolha o exercício:</label>
-                        <select class="form-select" id="exerciseSelect" [(ngModel)]="exerciseObj.exercise">
-                            <option value="" disabled selected>Escolha...</option>
-                            <option value="corrida">Corrida</option>
-                            <option value="surf">Surf</option>
-                            <option value="bicicleta">Bicicleta</option>
-                            <option value="futebol">Futebol</option>
-                            <option value="natação">Natação</option>
-                            <option value="musculação">Musculação</option>
-                        </select>
-                    </div>
-                    <div class="col-12 input-area">
-                        <label for="">Data:</label>
-                        <input type="date" [(ngModel)]="exerciseObj.date" class="form-control" placeholder="date">
-                    </div>
-                    <div class="col-6 input-area">
-                        <label for="">Distância(em Km):</label>
-                        <input type="number" [(ngModel)]="exerciseObj.distance" class="form-control"
-                            placeholder="distance">
-                    </div>
-                    <div class="col-6 input-area">
-                        <label for="">Duração(em minutos):</label>
-                        <input type="number" [(ngModel)]="exerciseObj.time" class="form-control" placeholder="time">
-                    </div>
-                </div>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="closeModal()">Fechar</button>
-                @if (exerciseObj.id == 0){
-                <button type="button" class="btn btn-primary" (click)="saveExercise()">Salvar</button>
-                } @else {
-                <button type="button" class="btn btn-success" (click)="updateExercise()">Atualizar</button>
-                }
-            </div>
         </div>
-    </div>
-</p-dialog>
+        <div class="modal-footer">
+            <button pButton type="button" label="Salvar" class="btn-success" (click)="saveActivity()">Salvar</button>
+            <button pButton type="button" label="Cancelar" class="btn-danger" (click)="cancelActivity()">Cancelar</button>
+        </div>
+    </p-dialog>
+    
+</div>
